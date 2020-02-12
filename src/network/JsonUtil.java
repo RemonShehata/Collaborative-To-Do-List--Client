@@ -114,12 +114,14 @@ public class JsonUtil {
         return obj;
     }
     
-    public static JsonObject fromList(ListModel list) {
+     public static JsonObject fromList(String type, ListModel list){
         JsonObject obj = Json.createObjectBuilder()
-                .add(JsonConst.TYPE, JsonConst.TYPE_ADD_LIST_REQUEST)
+                .add(JsonConst.TYPE, type)
+                .add("list_id", list.getList_id())
                 .add("title", list.getTitle())
                 .add("color", list.getColor())
-                .add("user_id", list.getUser_id())
+                .add("create_date", list.getCreate_date().toString())
+                .add("user_id",list.getUser().getId())
                 .build();
         return obj;
     }
@@ -176,6 +178,22 @@ public class JsonUtil {
         }
         
         return comments;        
+    }
+        public static JsonObject updateFromTask(TaskModel task) {
+        JsonObject obj = Json.createObjectBuilder()
+                .add(JsonConst.TYPE, JsonConst.TYPE_UPDATE_TASK_REQUEST)
+                .add("task_id",task.getTask_id())
+                .add("title", task.getTitle())
+                .add("description", task.getDescription())
+                .add("task_status", task.getTask_status())
+                .add("deadline", task.getDeadline().toString())
+                .add("list_id", task.getList_id())
+                .add("user_id", task.getUser_id())
+                .add("assign_date", task.getAssign_date().toString())
+                .add("assign_status", task.getAssign_status())
+                .build();
+        
+        return obj;
     }
 
     
