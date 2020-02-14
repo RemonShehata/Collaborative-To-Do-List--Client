@@ -111,7 +111,7 @@ public class HomeController implements Initializable {
     private ObservableList<String> FriendListObservable = FXCollections.observableArrayList("zeynab", "esma", "mazen", "remon", "ahmed");
     private ObservableList<TaskModel> toDoListObservable = FXCollections.observableArrayList();
     private ObservableList<TaskModel> inProgressListObservable = FXCollections.observableArrayList();
-   private ObservableList<TaskModel> doneListObservable = FXCollections.observableArrayList();
+    private ObservableList<TaskModel> doneListObservable = FXCollections.observableArrayList();
 
     private ObservableList<String> toDoListObservable2 = FXCollections.observableArrayList("zeynab", "esma", "mazen", "remon", "ahmed");
     private ObservableList<String> notificationObservable = FXCollections.observableArrayList("zeynab", "esma", "mazen", "remon", "ahmed");
@@ -160,6 +160,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+                makeNewTaskButton.setDisable(true);
         listsList.setItems(listListsObservable);
         listsList.setCellFactory(param -> new CellLists());
 
@@ -214,7 +215,7 @@ public class HomeController implements Initializable {
             TaskViewController reg = (TaskViewController) fxload.getController();
             TaskModel task = new TaskModel();
             task.setList_id(listID);
-            reg.setFromLastView(true, task);
+            reg.setFromLastView(true, task, loginUserID);
             stage.setScene(new Scene(root));
             stage.setTitle("Add Task");
             stage.initStyle(StageStyle.UNDECORATED);
@@ -289,8 +290,9 @@ public class HomeController implements Initializable {
 
     @FXML
     private void listItemClicked(MouseEvent event) {
+           makeNewTaskButton.setDisable(false);
         int selectedindex = listsList.getSelectionModel().getSelectedIndex();
-        int listID = userLists.get(selectedindex).getList_id();
+         listID = userLists.get(selectedindex).getList_id();
         updateTasksLists(listID);
     }
 
@@ -318,7 +320,6 @@ public class HomeController implements Initializable {
                             break;
                     }
                 }
-                System.out.println(toDoTasks.size());
                 Platform.runLater(() -> {
 
                     toDoListObservable.setAll(toDoTasks);
@@ -565,7 +566,17 @@ public class HomeController implements Initializable {
             delete.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    //go to list reject scene 
+       new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            System.out.println(selectedTask.getTask_id());
+                     JsonObject request = JsonUtil.fromTaskId(selectedTask.getTask_id(), JsonConst.TYPE_DELETE_TASK_REQUEST);
+                     new RequestHandler().makeRequest(request);
+                                    Platform.runLater(() -> {
+                                        updateTasksLists(listID);
+                                    });
+                        }
+                    }).start();
                 }
             });
             readMore.setOnAction(new EventHandler<ActionEvent>() {
@@ -578,7 +589,7 @@ public class HomeController implements Initializable {
                         Stage stage = new Stage();
                         TaskViewController taskControl = (TaskViewController) fxload.getController();
                         TaskModel task = selectedTask;
-                        taskControl.setFromLastView(false, task);
+                        taskControl.setFromLastView(false, task, loginUserID);
                         stage.setScene(new Scene(root));
                         stage.setTitle("Task Details");
 
