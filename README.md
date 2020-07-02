@@ -31,14 +31,8 @@ Collabertive To Do List is a client-server desktop application through which use
  This project is licensed under the MIT License - see the LICENSE.md file for details
  
  ### Screenshots
- ![client1](https://user-images.githubusercontent.com/47400411/86370284-d219dc00-bc7f-11ea-993e-070ea78952a7.PNG)
- ![client2](https://user-images.githubusercontent.com/47400411/86370291-d34b0900-bc7f-11ea-8a3c-5c5b57d3fe4c.PNG)
- ![client3](https://user-images.githubusercontent.com/47400411/86370293-d3e39f80-bc7f-11ea-826d-ad7a3573f672.PNG)
- ![Client4](https://user-images.githubusercontent.com/47400411/86370297-d3e39f80-bc7f-11ea-96a6-267914a3614c.PNG)
+ ![client1](https://user-images.githubusercontent.com/47400411/86370284-d219dc00-bc7f-11ea-993e-070ea78952a7.PNG) &nbsp; &nbsp; &nbsp; 
+ ![client2](https://user-images.githubusercontent.com/47400411/86370291-d34b0900-bc7f-11ea-8a3c-5c5b57d3fe4c.PNG) </br>
+ ![client3](https://user-images.githubusercontent.com/47400411/86370293-d3e39f80-bc7f-11ea-826d-ad7a3573f672.PNG) &nbsp; &nbsp; &nbsp; 
+ ![Client4](https://user-images.githubusercontent.com/47400411/86370297-d3e39f80-bc7f-11ea-96a6-267914a3614c.PNG) </br>
  ![Client5](https://user-images.githubusercontent.com/47400411/86370300-d47c3600-bc7f-11ea-9197-d67e065e97c2.PNG)
- 
-
- 
-  
-  
-
