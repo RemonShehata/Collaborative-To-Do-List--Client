@@ -20,6 +20,16 @@ Collabertive To Do List is a client-server desktop application through which use
 - **Option 2:** Run the code from IDE
   1. run the app in any Java IDE
   
+### Built using
+ - Java SE.
+ - JavaFX.
+ - MVC.
+ - JDBC.
+ - MySQL Workbench.
+ - Sockets.
+ - I/O Streams.
+ - JSON/GSON.
+  
  ### Authors
    - [Remon Shehata](https://github.com/RemonShehata)
    - [Asmaa Tarek ](https://github.com/Asmaa933)
